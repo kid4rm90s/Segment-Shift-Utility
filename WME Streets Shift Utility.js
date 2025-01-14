@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         WME Streets Shift Utility
 // @namespace    https://github.com/kid4rm90s/Streets-Shift-Utility
-// @version      2025.01.14.01
+// @version      2025.01.14.02
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      https://www.waze.com/editor*
 // @include      https://www.waze.com/*/editor*
 // @include      https://beta.waze.com/*
 // @exclude      https://www.waze.com/user/editor*
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
-//updateURL 	https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Streets%20Shift%20Utility.js
-//downloadURL 	https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Streets%20Shift%20Utility.js
+//@updateURL 	 https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Streets%20Shift%20Utility.js
+//@downloadURL 	 https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Streets%20Shift%20Utility.js
 // @grant        GM_xmlhttpRequest
 // @license      MIT
 // ==/UserScript==
