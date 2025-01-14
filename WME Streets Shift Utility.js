@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Streets Shift Utility
-// @namespace    
-// @version      2025.01.14.00
+// @namespace    https://github.com/kid4rm90s/Streets-Shift-Utility
+// @version      2025.01.14.01
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      https://www.waze.com/editor*
 // @include      https://www.waze.com/*/editor*
@@ -29,7 +29,7 @@ orgianl author: JustinS83 Waze*/
 	
     //var totalActions = 0;
     var _settings;
-    const updateMessage = "Testing<br><br>Thanks for the update!";	
+    const updateMessage = "Testing!<br><br>Thanks for the update!";	
 
     function bootstrap(tries = 1) {
         if (W && W.map && W.model && require && WazeWrap.Ready) {
