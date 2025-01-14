@@ -8,6 +8,8 @@
 // @include      https://beta.waze.com/*
 // @exclude      https://www.waze.com/user/editor*
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
+//updateURL 	https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Streets%20Shift%20Utility.js
+//downloadURL 	https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Streets%20Shift%20Utility.js
 // @grant        GM_xmlhttpRequest
 // @license      MIT
 // ==/UserScript==
