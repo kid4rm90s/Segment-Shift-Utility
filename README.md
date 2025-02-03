@@ -10,4 +10,4 @@ Now, when "Disconnect Nodes" is checked, the entire selected segment should shif
 5) To shift segments and disconnect them: Check "Disconnect Nodes".
 6) Use the shift buttons.
 
-<p align="center"><a href="https://raw.githubusercontent.com/kid4rm90s/Street-Shift-Utility/main/WME%20Segment%20Shift%20Utility.js"><img src="https://i.ibb.co/JzHFKzj/button-install-here.png"></a></p>
+<p align="center"><a href="https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js"><img src="https://i.ibb.co/JzHFKzj/button-install-here.png"></a></p>

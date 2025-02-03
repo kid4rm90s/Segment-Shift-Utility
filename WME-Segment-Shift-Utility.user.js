@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.02.02.01
+// @version      2025.02.03.01
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      https://www.waze.com/editor*
 // @include      https://www.waze.com/*/editor*
 // @include      https://beta.waze.com/*
 // @exclude      https://www.waze.com/user/editor*
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
-// @updateURL 	 https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME%20Segment%20Shift%20Utility.js
-// @downloadURL  https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME%20Segment%20Shift%20Utility.js
+// @updateURL 	 https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
+// @downloadURL  https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
 // @grant        GM_xmlhttpRequest
 // @license      MIT
 // ==/UserScript==
@@ -29,7 +29,7 @@ orgianl author: JustinS83 Waze*/
 
     //var totalActions = 0;
     var _settings;
-    const updateMessage = "esting<br><br>Thanks for the update!";
+    const updateMessage = "Now the script is able to work as intended!!<br><br>Thanks for the update!";
 
     function bootstrap(tries = 1) {
 
@@ -164,7 +164,7 @@ orgianl author: JustinS83 Waze*/
             $("#collapser").addClass("fa-caret-square-o-down");
         }
 
-        WazeWrap.Interface.ShowScriptUpdate("WME SS Util", GM_info.script.version, updateMessage, "https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME%20Segment%20Shift%20Utility.js", "https://github.com/kid4rm90s/Segment-Shift-Utility");
+        WazeWrap.Interface.ShowScriptUpdate("WME SS Util", GM_info.script.version, updateMessage, "https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js", "https://github.com/kid4rm90s/Segment-Shift-Utility");
     }
 
     function saveSettingsToStorage() {
