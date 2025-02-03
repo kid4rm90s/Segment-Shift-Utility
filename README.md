@@ -1,6 +1,6 @@
 # <p align="center">WME Segment Shift Utility</p>
 
-Now, when "Disconnect Nodes" is checked, the entire selected segment should shift and become disconnected from its original nodes and when unchecked, the entire selected segments including its connected segments' junction nodes also shift. Please test this version carefully, especially the disconnect functionality, and let me know if it's working correctly now!
+Now, when "Disconnect Nodes" is checked, the entire selected segment should shift and become separated from its original nodes; when unchecked, the entire selected segment, including the junction nodes of its related segments, likewise shift. Please carefully try this version, particularly the disconnect capability, and let me know whether it is now operating as intended.
 
 ## Instructions
 1) Install this script in Tampermonkey.

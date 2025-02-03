@@ -143,7 +143,7 @@ orgianl author: JustinS83 Waze*/
 
         W.selectionManager.events.register("selectionchanged", null, checkDisplayTool);
 
-        var loadedSettings = $.parseJSON(localStorage.getItem("WME_RAUtil"));
+        var loadedSettings = $.parseJSON(localStorage.getItem("WME_SSUtil"));
         var defaultSettings = {
             divTop: "15%",
             divLeft: "25%",
@@ -180,7 +180,7 @@ orgianl author: JustinS83 Waze*/
             settings.divTop = $('#SSUtilWindow').css('top');
             settings.Expanded = $("#collapser").attr('class').indexOf("fa-caret-square-o-up") > -1;
             settings.DisconnectNodes = $('#chkDisconnectNodes').is(':checked'); // Save checkbox state
-            localStorage.setItem("WME_RAUtil", JSON.stringify(settings));
+            localStorage.setItem("WME_SSUtil", JSON.stringify(settings));
         }
     }
 
