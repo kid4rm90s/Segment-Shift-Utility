@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.02.03.01
+// @version      2025.03.17.01
 // @description  Utility for shifting street segments in WME without disconnecting nodes
-// @include      https://www.waze.com/editor*
-// @include      https://www.waze.com/*/editor*
-// @include      https://beta.waze.com/*
-// @exclude      https://www.waze.com/user/editor*
+// @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
+// @author       kid4rm90s
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
 // @updateURL 	 https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
 // @downloadURL  https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
@@ -29,7 +27,7 @@ orgianl author: JustinS83 Waze*/
 
     //var totalActions = 0;
     var _settings;
-    const updateMessage = "Now the script is able to work as intended!!<br><br>Thanks for the update!";
+    const updateMessage = "Now it is compatible with WME RA Util.<br><br>Collaper is working now.<br><br>Thanks for the update!";
 
     function bootstrap(tries = 1) {
 
@@ -82,9 +80,9 @@ orgianl author: JustinS83 Waze*/
         SSUtilWindow.style.boxShadow = '5px 5px 10px Silver';
         SSUtilWindow.style.padding = '4px';
 
-        var alertsHTML = '<div id="header" style="padding: 4px; background-color:#92C3D3; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px; color: white; font-weight: bold; text-align:center; letter-spacing: 1px;text-shadow: black 0.1em 0.1em 0.2em;"><img src="https://storage.googleapis.com/wazeopedia-files/1/1e/RA_Util.png" style="float:left"></img> Segment Shift Utility <a data-toggle="collapse" href="#divWrappers" id="collapserLink" style="float:right"><span id="collapser" style="cursor:pointer;padding:2px;color:white;" class="fa fa-caret-square-o-up"></a></span></div>';
+        var alertsHTML = '<div id="header" style="padding: 4px; background-color:#92C3D3; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px; color: white; font-weight: bold; text-align:center; letter-spacing: 1px;text-shadow: black 0.1em 0.1em 0.2em;"><img src="https://storage.googleapis.com/wazeopedia-files/1/1e/RA_Util.png" style="float:left"></img> Segment Shift Utility <a data-toggle="collapse" href="#divWrappers1" id="collapserLink1" style="float:right"><span id="collapser1" style="cursor:pointer;padding:2px;color:white;" class="fa fa-caret-square-o-up"></a></span></div>';
         // start collapse // I put it al the beginning
-      alertsHTML += '<div id="divWrappers" class="collapse in">';
+      alertsHTML += '<div id="divWrappers1" class="collapse in">';
          //***************** Disconnect Nodes Checkbox **************************
          alertsHTML += '<p style="margin: 10px 0px 0px 20px;"><input type="checkbox" id="chkDisconnectNodes"> Disconnect Nodes</p>';
          //***************** Shift Amount **************************
@@ -128,15 +126,15 @@ orgianl author: JustinS83 Waze*/
                 event.preventDefault();
         });
 
-        $('#collapserLink').click(function(){
-			$("#divWrappers").slideToggle("fast");
-            if($('#collapser').attr('class') == "fa fa-caret-square-o-down"){
-                $("#collapser").removeClass("fa-caret-square-o-down");
-                $("#collapser").addClass("fa-caret-square-o-up");
+        $('#collapserLink1').click(function(){
+			$("#divWrappers1").slideToggle("fast");
+            if($('#collapser1').attr('class') == "fa fa-caret-square-o-down"){
+                $("#collapser1").removeClass("fa-caret-square-o-down");
+                $("#collapser1").addClass("fa-caret-square-o-up");
             }
             else{
-                $("#collapser").removeClass("fa-caret-square-o-up");
-                $("#collapser").addClass("fa-caret-square-o-down");
+                $("#collapser1").removeClass("fa-caret-square-o-up");
+                $("#collapser1").addClass("fa-caret-square-o-down");
             }
             saveSettingsToStorage();
         });
@@ -157,11 +155,11 @@ orgianl author: JustinS83 Waze*/
         $('#chkDisconnectNodes').prop('checked', _settings.DisconnectNodes); // Set checkbox state from settings
 
         if(!_settings.Expanded){
-            // $("#divWrappers").removeClass("in");
-            // $("#divWrappers").addClass("collapse");
-			$("#divWrappers").hide();
-            $("#collapser").removeClass("fa-caret-square-o-up");
-            $("#collapser").addClass("fa-caret-square-o-down");
+            // $("#divWrappers1").removeClass("in");
+            // $("#divWrappers1").addClass("collapse");
+			$("#divWrappers1").hide();
+            $("#collapser1").removeClass("fa-caret-square-o-up");
+            $("#collapser1").addClass("fa-caret-square-o-down");
         }
 
         WazeWrap.Interface.ShowScriptUpdate("WME SS Util", GM_info.script.version, updateMessage, "https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js", "https://github.com/kid4rm90s/Segment-Shift-Utility");
@@ -178,7 +176,7 @@ orgianl author: JustinS83 Waze*/
 
             settings.divLeft = $('#SSUtilWindow').css('left');
             settings.divTop = $('#SSUtilWindow').css('top');
-            settings.Expanded = $("#collapser").attr('class').indexOf("fa-caret-square-o-up") > -1;
+            settings.Expanded = $("#collapser1").attr('class').indexOf("fa-caret-square-o-up") > -1;
             settings.DisconnectNodes = $('#chkDisconnectNodes').is(':checked'); // Save checkbox state
             localStorage.setItem("WME_SSUtil", JSON.stringify(settings));
         }
