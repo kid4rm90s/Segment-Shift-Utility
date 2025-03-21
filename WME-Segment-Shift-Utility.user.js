@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.03.17.01
+// @version      2025.03.21.00
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
