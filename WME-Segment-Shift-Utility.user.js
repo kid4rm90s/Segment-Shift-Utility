@@ -5,10 +5,12 @@
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
+// @connect      githubusercontent.com
+// @connect      github.com
+// @grant        GM_xmlhttpRequest
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
 // @updateURL 	 https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
 // @downloadURL  https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
-// @grant        GM_xmlhttpRequest
 // @license      MIT
 // ==/UserScript==
 
