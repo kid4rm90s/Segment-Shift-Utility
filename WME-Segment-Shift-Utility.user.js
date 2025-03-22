@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.03.21.00
+// @version      2025.03.22.00
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
-// @connect      githubusercontent.com
+// @connect      raw.githubusercontent.com
 // @connect      github.com
 // @grant        GM_xmlhttpRequest
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
@@ -17,24 +17,31 @@
 /*Scripts modified from WME RA Util (https://greasyfork.org/en/scripts/23616-wme-ra-util)
 orgianl author: JustinS83 Waze*/
 (function() {
-
+	let sdkVersion = "";
+	unsafeWindow.SDK_INITIALIZED.then(() => {
+    let sdk = unsafeWindow.getWmeSdk({
+    scriptId: "wme-ss-util",
+    scriptName: "WME Segment Shift Utility",
+    });
+    sdkVersion = sdk.getSDKVersion()
+});
     var SSUtilWindow = null;
     var UpdateSegmentGeometry;
     var MoveNode, MultiAction;
 	var drc_layer;
 	let wEvents;
-    const SCRIPT_VERSION = GM_info.script.version.toString();
-    const SCRIPT_NAME = GM_info.script.name;
-    const DOWNLOAD_URL = GM_info.scriptUpdateURL;
-
+    const SSUTIL_VERSION = `${GM_info.script.version}`;
+    //const SCRIPT_NAME = GM_info.script.name;
+	const GF_LINK = 'https://github.com/kid4rm90s/Segment-Shift-Utility/blob/master/WME-Segment-Shift-Utility.user.js';
+    const DOWNLOAD_URL = 'https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/master/WME-Segment-Shift-Utility.user.js';
     //var totalActions = 0;
     var _settings;
-    const updateMessage = "Now it is compatible with WME RA Util.<br><br>Collaper is working now.<br><br>Thanks for the update!";
+    const updateMessage = "Now it is able to alert script update.<br><br>Minor changes<br><br>Thanks for the update!";
 
     function bootstrap(tries = 1) {
 
 		if (W.map && W.model && require && WazeWrap.Ready){	
-            loadScriptUpdateMonitor();
+            startScriptUpdateMonitor();
             init();
         }
         else if (tries < 1000)
@@ -43,16 +50,16 @@ orgianl author: JustinS83 Waze*/
 
     bootstrap();
 
-    function loadScriptUpdateMonitor() {
-        let updateMonitor;
-        try {
-            updateMonitor = new WazeWrap.Alerts.ScriptUpdateMonitor(SCRIPT_NAME, SCRIPT_VERSION, DOWNLOAD_URL, GM_xmlhttpRequest);
-            updateMonitor.start();
-        } catch (ex) {
-            // Report, but don't stop if ScriptUpdateMonitor fails.
-            console.error(`${SCRIPT_NAME}:`, ex);
-        }
-    }
+	function startScriptUpdateMonitor() {
+		let updateMonitor;
+		try {
+			updateMonitor = new WazeWrap.Alerts.ScriptUpdateMonitor(GM_info.script.name, GM_info.script.version, DOWNLOAD_URL, GM_xmlhttpRequest, DOWNLOAD_URL);
+			updateMonitor.start();
+		} catch (ex) {
+			// Report, but don't stop if ScriptUpdateMonitor fails.
+			console.error('WME SSUtil:', ex);
+		}
+	}
 
     function init(){
         injectCss();
