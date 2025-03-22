@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.03.22.00
+// @version      2025.03.22.01
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
@@ -36,7 +36,7 @@ orgianl author: JustinS83 Waze*/
     const DOWNLOAD_URL = 'https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/master/WME-Segment-Shift-Utility.user.js';
     //var totalActions = 0;
     var _settings;
-    const updateMessage = "Now it is able to alert script update.<br><br>Minor changes<br><br>Thanks for the update!";
+    const updateMessage = "Minor changes:<br><br>Now it is able to alert the distance when the segment is shifted.<br><br>Thanks for the update!";
 
     function bootstrap(tries = 1) {
 
@@ -351,6 +351,7 @@ orgianl author: JustinS83 Waze*/
         var convertedCoords = WazeWrap.Geometry.ConvertTo4326(segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][0], segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][1]);
         var gpsOffsetAmount = WazeWrap.Geometry.CalculateLongOffsetGPS(-$('#shiftAmount').val(), convertedCoords.lon, convertedCoords.lat);
         ShiftSegmentsNodesLong(gpsOffsetAmount);
+		WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the left.`, false, false, 2000);		
     }
     //Right
     function SSShiftRightBtnClick(e){
@@ -360,6 +361,7 @@ orgianl author: JustinS83 Waze*/
         var convertedCoords = WazeWrap.Geometry.ConvertTo4326(segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][0], segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][1]);
         var gpsOffsetAmount = WazeWrap.Geometry.CalculateLongOffsetGPS($('#shiftAmount').val(), convertedCoords.lon, convertedCoords.lat);
         ShiftSegmentsNodesLong(gpsOffsetAmount);
+		WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the right.`, false, false, 2000);
     }
     //Up
     function SSShiftUpBtnClick(e){
@@ -368,6 +370,7 @@ orgianl author: JustinS83 Waze*/
         if (!segObj) return;
         var gpsOffsetAmount = WazeWrap.Geometry.CalculateLatOffsetGPS($('#shiftAmount').val(), WazeWrap.Geometry.ConvertTo4326(segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][0], segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][1]));
         ShiftSegmentNodesLat(gpsOffsetAmount);
+		WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the up.`, false, false, 2000);
     }
     //Down
     function SSShiftDownBtnClick(e){
@@ -376,6 +379,7 @@ orgianl author: JustinS83 Waze*/
         if (!segObj) return;
         var gpsOffsetAmount = WazeWrap.Geometry.CalculateLatOffsetGPS(-$('#shiftAmount').val(), WazeWrap.Geometry.ConvertTo4326(segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][0], segObj.WW.getAttributes().geoJSONGeometry.coordinates[0][1]));
         ShiftSegmentNodesLat(gpsOffsetAmount);
+		WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the down.`, false, false, 2000);
     }
 
     function injectCss() {
