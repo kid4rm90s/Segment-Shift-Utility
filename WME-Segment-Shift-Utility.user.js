@@ -1,16 +1,15 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.03.22.01
+// @version      2025.05.26.02
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
-// @connect      raw.githubusercontent.com
-// @connect      github.com
+// @connect      greasyfork.org
 // @grant        GM_xmlhttpRequest
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
-// @updateURL 	 https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
-// @downloadURL  https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js
+// @downloadURL  https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js
+// @updateURL    https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.meta.js
 // @license      MIT
 // ==/UserScript==
 
@@ -32,11 +31,11 @@ orgianl author: JustinS83 Waze*/
 	let wEvents;
     const SSUTIL_VERSION = `${GM_info.script.version}`;
     //const SCRIPT_NAME = GM_info.script.name;
-	const GF_LINK = 'https://github.com/kid4rm90s/Segment-Shift-Utility/blob/master/WME-Segment-Shift-Utility.user.js';
-    const DOWNLOAD_URL = 'https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/master/WME-Segment-Shift-Utility.user.js';
+	const GF_LINK = 'https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js';
+    const DOWNLOAD_URL = 'https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js';
     //var totalActions = 0;
     var _settings;
-    const updateMessage = "Minor changes:<br><br>Now it is able to alert the distance when the segment is shifted.<br><br>Thanks for the update!";
+    const updateMessage = "Minor changes:<br><br>Minor updates!<br><br>Thanks for using it!";
 
     function bootstrap(tries = 1) {
 
@@ -171,7 +170,7 @@ orgianl author: JustinS83 Waze*/
             $("#collapser1").addClass("fa-caret-square-o-down");
         }
 
-        WazeWrap.Interface.ShowScriptUpdate("WME SS Util", GM_info.script.version, updateMessage, "https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js", "https://github.com/kid4rm90s/Segment-Shift-Utility");
+        WazeWrap.Interface.ShowScriptUpdate("WME SS Util", GM_info.script.version, updateMessage, "https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js", "https://github.com/kid4rm90s/Segment-Shift-Utility");
     }
 
     function saveSettingsToStorage() {
