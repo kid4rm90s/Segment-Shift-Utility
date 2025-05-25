@@ -1,13 +1,56 @@
-# <p align="center">WME Segment Shift Utility</p>
+# WME Segment Shift Utility
 
-Now, when "Disconnect Nodes" is checked, the entire selected segment should shift and become separated from its original nodes; when unchecked, the entire selected segment, including the junction nodes of its related segments, likewise shift. Please carefully try this version, particularly the disconnect capability, and let me know whether it is now operating as intended.
+A powerful utility for the Waze Map Editor (WME) that allows you to shift selected street segments in any direction (up, down, left, right) by a specified distance, with or without disconnecting nodes.
 
-## Instructions
-1) Install this script in Tampermonkey.
-2) Open the Waze Map Editor.
-3) Select segments.
-4) To shift segments and move connected nodes (normal behavior): Leave "Disconnect Nodes" unchecked.
-5) To shift segments and disconnect them: Check "Disconnect Nodes".
-6) Use the shift buttons.
+---
 
-<p align="center"><a href="https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js"><img src="https://i.ibb.co/JzHFKzj/button-install-here.png"></a></p>
+## Features
+
+- **Shift Segments:** Move selected segments up, down, left, or right by a user-defined number of meters.
+- **Node Handling:** Optionally disconnect nodes when shifting, or keep all connections intact.
+- **Intuitive UI:** Floating, draggable panel with easy controls and shift amount input.
+- **Distance Feedback:** Alerts you to the exact distance segments are shifted.
+- **Settings Persistence:** Remembers your panel position and preferences.
+- **Update Notifications:** Built-in update checker to keep your script current.
+
+---
+
+## How to Use
+
+1. **Select** one or more segments in WME.
+2. **Open** the Segment Shift Utility panel (appears automatically when a segment is selected).
+3. **Set** the shift amount (in meters).
+4. **Choose** whether to disconnect nodes (checkbox).
+5. **Click** the arrow buttons to shift segments in the desired direction.
+
+---
+
+## Requirements
+
+- **Waze Map Editor** (www.waze.com/editor or beta)
+- **WazeWrap** library (auto-loaded)
+- **Tampermonkey** or compatible userscript manager
+
+---
+
+## Links
+
+- [Source on GitHub](https://github.com/kid4rm90s/Segment-Shift-Utility)
+- [Raw Script for Installation](https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js)
+
+---
+
+## Credits
+
+- Based on code from [WME RA Util](https://greasyfork.org/en/scripts/23616-wme-ra-util) by JustinS83.
+- Developed by kid4rm90s.
+
+---
+
+## License
+
+MIT License
+
+---
+
+**Make segment shifting in WME fast, safe, and easy!**
