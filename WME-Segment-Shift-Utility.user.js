@@ -9,7 +9,7 @@
 // @grant        GM_xmlhttpRequest
 // @grant        unsafeWindow
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
-// @require      https://davidsl4.github.io/WMEScripts/lib/wme-sdk-plus.js
+// @require      https://kid4rm90s.github.io/wme-sdk-plus.js
 // @exclude      https://cdn.jsdelivr.net/gh/wazeSpace/wme-sdk-plus@06108853094d40f67e923ba0fe0de31b1cec4412/wme-sdk-plus.js
 // @exclude      https://cdn.jsdelivr.net/gh/WazeSpace/wme-sdk-plus@latest/wme-sdk-plus.js
 // @require      https://cdn.jsdelivr.net/npm/@turf/turf@7.2.0/turf.min.js
