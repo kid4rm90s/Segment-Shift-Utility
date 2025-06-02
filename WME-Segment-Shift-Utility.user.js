@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.06.02.01
+// @version      2025.06.02.02
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
@@ -46,7 +46,7 @@ orgianl author: JustinS83 Waze*/
     
 
     async function bootstrap() {
-        const wmeSdk = getWmeSdk({ scriptId: 'wme-ra-util', scriptName: 'WME RA Util' });
+        const wmeSdk = getWmeSdk({ scriptId: 'wme-ss-util', scriptName: 'WME SS Util' });
         const sdkPlus = await initWmeSdkPlus(wmeSdk, {
             hooks: ['Editing.Transactions']
         });
