@@ -28,7 +28,7 @@ A powerful utility for the Waze Map Editor (WME) that allows you to shift select
 
 ## Requirements
 
-- **Waze Map Editor** (www.waze.com/editor or beta)
+- **Waze Map Editor** ([www.waze.com/editor](https://www.waze.com/editor) or beta)
 - **WazeWrap** library (auto-loaded)
 - **Tampermonkey** or compatible userscript manager
 
