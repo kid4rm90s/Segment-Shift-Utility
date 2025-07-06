@@ -22,6 +22,7 @@ A powerful utility for the Waze Map Editor (WME) that allows you to shift select
 3. **Set** the shift amount (in meters).
 4. **Choose** whether to disconnect nodes (checkbox).
 5. **Click** the arrow buttons to shift segments in the desired direction.
+   5.a. **Or** Using keyboard shortcuts "Alt+Up arrow", "Alt+Down arrow", "Alt+Left arrow", "Alt+Right arrow"
 
 ---
 
@@ -36,7 +37,6 @@ A powerful utility for the Waze Map Editor (WME) that allows you to shift select
 ## Links
 
 - [Source on GitHub](https://github.com/kid4rm90s/Segment-Shift-Utility)
-- [Raw Script for Installation](https://raw.githubusercontent.com/kid4rm90s/Segment-Shift-Utility/main/WME-Segment-Shift-Utility.user.js)
 
 ---
 
