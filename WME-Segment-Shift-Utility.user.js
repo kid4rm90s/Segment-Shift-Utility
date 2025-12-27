@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.07.04.01
+// @version      2025.12.27.01
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
 // @connect      greasyfork.org
 // @grant        GM_xmlhttpRequest
 // @grant        unsafeWindow
-// @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
+// @require      https://greasyfork.org/scripts/560385/code/WazeToastr.js
 // @require      https://cdn.jsdelivr.net/gh/wazeSpace/wme-sdk-plus@06108853094d40f67e923ba0fe0de31b1cec4412/wme-sdk-plus.js
 // @exclude      https://cdn.jsdelivr.net/gh/WazeSpace/wme-sdk-plus@latest/wme-sdk-plus.js
 // @require      https://cdn.jsdelivr.net/npm/@turf/turf@7.2.0/turf.min.js
@@ -19,7 +19,7 @@
 
 /* global getWmeSdk */
 /* global initWmeSdkPlus */
-/* global WazeWrap */
+/* global WazeToastr */
 /* global turf */
 /* global $ */
 /* global jQuery */
@@ -29,7 +29,7 @@
 /*Scripts modified from WME RA Util (https://greasyfork.org/en/scripts/23616-wme-ra-util)
 orgianl author: JustinS83 Waze*/
 (function () {
-  const updateMessage = ' Added keyboard shortcuts (Alt + Arrow keys) for quick segment shifting in all four directions.<br> This improves workflow speed and matches the behavior of other WME utility scripts.';
+  const updateMessage = ' <strong>Fixed :</strong><br> - Temporary fix for alerts not displaying properly.';
   const SCRIPT_VERSION = GM_info.script.version.toString();
   const SCRIPT_NAME = GM_info.script.name;
   const DOWNLOAD_URL = GM_info.script.downloadURL;
@@ -51,7 +51,6 @@ orgianl author: JustinS83 Waze*/
     });
     sdk = sdkPlus || wmeSdk;
     sdk.Events.once({ eventName: 'wme-ready' }).then(() => {
-      loadScriptUpdateMonitor();
       init();
     });
   }
@@ -65,16 +64,22 @@ orgianl author: JustinS83 Waze*/
   }
   waitForWME();
 
-  function loadScriptUpdateMonitor() {
-    try {
-      const updateMonitor = new WazeWrap.Alerts.ScriptUpdateMonitor(SCRIPT_NAME, SCRIPT_VERSION, DOWNLOAD_URL, GM_xmlhttpRequest);
-      updateMonitor.start();
-    } catch (ex) {
-      // Report, but don't stop if ScriptUpdateMonitor fails.
-      console.error(`${SCRIPT_NAME}:`, ex);
-    }
-  }
+function scriptupdatemonitor() {
+  if (WazeToastr?.Ready) {
+    // Create and start the ScriptUpdateMonitor
+    const updateMonitor = new WazeToastr.Alerts.ScriptUpdateMonitor(SCRIPT_NAME, SCRIPT_VERSION, DOWNLOAD_URL, GM_xmlhttpRequest);
 
+    // Check immediately on page load, then every 2 hours
+    updateMonitor.start(2, true); // checkImmediately = true
+
+    // Show the update dialog for the current version
+    WazeToastr.Interface.ShowScriptUpdate(SCRIPT_NAME, SCRIPT_VERSION, updateMessage, DOWNLOAD_URL);
+  } else {
+    setTimeout(scriptupdatemonitor, 250);
+  }
+}
+  scriptupdatemonitor();
+  
   function init() {
     console.log('SS UTIL', GM_info.script);
     injectCss();
@@ -208,7 +213,7 @@ orgianl author: JustinS83 Waze*/
     }
 
     sdk.Events.on({ eventName: 'wme-selection-changed', eventHandler: checkDisplayTool });
-    WazeWrap.Interface.ShowScriptUpdate('WME SS Util', GM_info.script.version, updateMessage, 'https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js', 'https://github.com/kid4rm90s/Segment-Shift-Utility');
+    WazeToastr.Interface.ShowScriptUpdate('WME SS Util', GM_info.script.version, updateMessage, 'https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js', 'https://github.com/kid4rm90s/Segment-Shift-Utility');
   }
 
   function saveSettingsToStorage() {
@@ -412,25 +417,25 @@ orgianl author: JustinS83 Waze*/
   function SSShiftLeftClick(e) {
     e.stopPropagation();
     ShiftSegmentNodesLon(-parseFloat($('#shiftAmount').val())); // Negative for West
-    WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the left.`, false, false, 1500);
+    WazeToastr.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the left.`, false, false, 1500);
   }
   //Right
   function SSShiftRightClick(e) {
     e.stopPropagation();
     ShiftSegmentNodesLon(parseFloat($('#shiftAmount').val())); // Positive for East
-    WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the right.`, false, false, 1500);
+    WazeToastr.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the right.`, false, false, 1500);
   }
   //Up
   function SSShiftUpClick(e) {
     e.stopPropagation();
     ShiftSegmentNodesLat(parseFloat($('#shiftAmount').val()));
-    WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the up.`, false, false, 1500);
+    WazeToastr.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the up.`, false, false, 1500);
   }
   //Down
   function SSShiftDownClick(e) {
     e.stopPropagation();
     ShiftSegmentNodesLat(-parseFloat($('#shiftAmount').val()));
-    WazeWrap.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the down.`, false, false, 1500);
+    WazeToastr.Alerts.info('WME Segment Shift Utility', `The segments are shifted by <b>${$('#shiftAmount').val()} Metres</b> to the down.`, false, false, 1500);
   }
 
   function injectCss() {
