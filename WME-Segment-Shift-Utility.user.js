@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Segment Shift Utility
 // @namespace    https://github.com/kid4rm90s/Segment-Shift-Utility
-// @version      2025.12.27.01
+// @version      2025.12.27.02
 // @description  Utility for shifting street segments in WME without disconnecting nodes
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/*
 // @author       kid4rm90s
@@ -30,9 +30,10 @@
 orgianl author: JustinS83 Waze*/
 (function () {
   const updateMessage = ' <strong>Fixed :</strong><br> - Temporary fix for alerts not displaying properly.';
-  const SCRIPT_VERSION = GM_info.script.version.toString();
-  const SCRIPT_NAME = GM_info.script.name;
-  const DOWNLOAD_URL = GM_info.script.downloadURL;
+  const scriptVersion = GM_info.script.version.toString();
+  const scriptName = GM_info.script.name;
+  const downloadUrl = GM_info.script.downloadURL;
+  const forumURL = 'https://greasyfork.org/scripts/537258-segment-shift-utility/feedback';
 
   const DIRECTION = {
     NORTH: 0,
@@ -67,13 +68,13 @@ orgianl author: JustinS83 Waze*/
 function scriptupdatemonitor() {
   if (WazeToastr?.Ready) {
     // Create and start the ScriptUpdateMonitor
-    const updateMonitor = new WazeToastr.Alerts.ScriptUpdateMonitor(SCRIPT_NAME, SCRIPT_VERSION, DOWNLOAD_URL, GM_xmlhttpRequest);
+    const updateMonitor = new WazeToastr.Alerts.ScriptUpdateMonitor(scriptName, scriptVersion, downloadUrl, GM_xmlhttpRequest);
 
     // Check immediately on page load, then every 2 hours
     updateMonitor.start(2, true); // checkImmediately = true
 
     // Show the update dialog for the current version
-    WazeToastr.Interface.ShowScriptUpdate(SCRIPT_NAME, SCRIPT_VERSION, updateMessage, DOWNLOAD_URL);
+    WazeToastr.Interface.ShowScriptUpdate(scriptName, scriptVersion, updateMessage, downloadUrl);
   } else {
     setTimeout(scriptupdatemonitor, 250);
   }
@@ -213,7 +214,6 @@ function scriptupdatemonitor() {
     }
 
     sdk.Events.on({ eventName: 'wme-selection-changed', eventHandler: checkDisplayTool });
-    WazeToastr.Interface.ShowScriptUpdate('WME SS Util', GM_info.script.version, updateMessage, 'https://update.greasyfork.org/scripts/537258/WME%20Segment%20Shift%20Utility.user.js', 'https://github.com/kid4rm90s/Segment-Shift-Utility');
   }
 
   function saveSettingsToStorage() {
